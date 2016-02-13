@@ -11,11 +11,14 @@ public class SecondPlayerController : MonoBehaviour {
 
 	public GameObject projectile;
 	public AudioClip fireSound;
+	private LivesKeeper livesKeeper;
 
 	private float xmin;
 	private float xmax;
 
 	void Start () {
+		livesKeeper = GameObject.Find ("Lives").GetComponent<LivesKeeper> ();
+
 		float distance = transform.position.z - Camera.main.transform.position.z;
 		Vector3 leftmost = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, distance));
 		Vector3 rightmost = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0, distance));
@@ -56,9 +59,21 @@ public class SecondPlayerController : MonoBehaviour {
 			health -= missile.GetDamage ();
 			missile.Hit ();
 			if (health <= 0) {
-				Die ();
+				if (PlayerSpawner.lives > 0) {
+					LoseLife ();
+				}
+				else {
+					Die ();
+				}
 			}
 		}
+	}
+
+	void LoseLife() {
+		PlayerSpawner.lives--;
+		livesKeeper.SetLives (PlayerSpawner.lives);
+		Destroy (gameObject);
+		Invoke ("PlayerSpawner.SpawnPlayers", 5);
 	}
 
 	void Die() {
