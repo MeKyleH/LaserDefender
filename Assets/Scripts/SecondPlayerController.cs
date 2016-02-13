@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class PlayerController : MonoBehaviour {
+public class SecondPlayerController : MonoBehaviour {
 
 	public float speed = 15.0f;
 	public float padding = 1f;
@@ -30,17 +30,17 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		// launches projectile
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.RightShift)) {
 			InvokeRepeating ("Fire", 0.000001f, firingRate);
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.RightShift)) {
 			CancelInvoke ("Fire");
 		}
 
 		//move the ship left and right
-		if (Input.GetKey(KeyCode.A)) {
+		if (Input.GetKey(KeyCode.LeftArrow)) {
 			transform.position += Vector3.left * speed * Time.deltaTime;
-		}else if(Input.GetKey(KeyCode.D)) {
+		}else if(Input.GetKey(KeyCode.RightArrow)) {
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
 			
