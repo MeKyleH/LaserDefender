@@ -33,10 +33,10 @@ public class SecondPlayerController : MonoBehaviour {
 	
 	void Update () {
 		// launches projectile
-		if (Input.GetKeyDown (KeyCode.RightShift)) {
+		if (Input.GetKeyDown (KeyCode.UpArrow)) {
 			InvokeRepeating ("Fire", 0.000001f, firingRate);
 		}
-		if (Input.GetKeyUp (KeyCode.RightShift)) {
+		if (Input.GetKeyUp (KeyCode.UpArrow)) {
 			CancelInvoke ("Fire");
 		}
 

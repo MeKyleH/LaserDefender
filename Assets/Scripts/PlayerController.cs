@@ -35,10 +35,10 @@ public class PlayerController : MonoBehaviour {
 	
 	void Update () {
 		// launches projectile
-		if (Input.GetKeyDown (KeyCode.Space)) {
+		if (Input.GetKeyDown (KeyCode.W)) {
 			InvokeRepeating ("Fire", 0.000001f, firingRate);
 		}
-		if (Input.GetKeyUp (KeyCode.Space)) {
+		if (Input.GetKeyUp (KeyCode.W)) {
 			CancelInvoke ("Fire");
 		}
 
