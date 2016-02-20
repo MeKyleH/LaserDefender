@@ -80,6 +80,7 @@ public class PlayerController : MonoBehaviour {
 
 	void Die() {
 		Destroy (gameObject);
+		livesKeeper.SetLives (5);
 		LevelManager man = GameObject.Find ("LevelManager").GetComponent<LevelManager> ();
 		man.LoadLevel ("Win Screen");
 	}

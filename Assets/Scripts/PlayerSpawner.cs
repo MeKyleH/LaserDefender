@@ -13,12 +13,26 @@ public class PlayerSpawner : MonoBehaviour {
 		Vector3 leftBound = Camera.main.ViewportToWorldPoint (new Vector3 (0, 0, distanceToCamera));
 		Vector3 rightBound = Camera.main.ViewportToWorldPoint (new Vector3 (1, 0));
 
+		float playerCount = PlayerPrefsManager.GetPlayers ();
+
+		if (playerCount < 4 && playerPrefab.name == "FourthPlayer") {
+			this.enabled = false;
+			Destroy(gameObject);
+		}
+		if (playerCount < 3 && playerPrefab.name == "ThirdPlayer") {
+			this.enabled = false;
+			Destroy(gameObject);
+		}
+		if (playerCount < 2 && playerPrefab.name == "SecondPlayer") {
+			this.enabled = false;
+			Destroy(gameObject);
+		}
 		SpawnUntilFull ();
 	}
 
 	void SpawnPlayer() {
 		foreach (Transform child in transform) {
-			GameObject player =Instantiate (playerPrefab, child.transform.position, Quaternion.identity) as GameObject;
+			GameObject player = Instantiate (playerPrefab, child.transform.position, Quaternion.identity) as GameObject;
 			player.transform.parent = child;
 		}
 	}
