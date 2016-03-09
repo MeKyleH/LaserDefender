@@ -33,17 +33,17 @@ public class FourthPlayerController : MonoBehaviour {
 	
 	void Update () {
 		// launches projectile
-		if (Input.GetKeyDown (KeyCode.Alpha8)) {
+		if (Input.GetKeyDown ("[8]")) {
 			InvokeRepeating ("Fire", 0.000001f, firingRate);
 		}
-		if (Input.GetKeyUp (KeyCode.Alpha8)) {
+		if (Input.GetKeyUp ("[8]")) {
 			CancelInvoke ("Fire");
 		}
 
 		//move the ship left and right
-		if (Input.GetKey(KeyCode.Alpha4)) {
+		if (Input.GetKey("[4]")) {
 			transform.position += Vector3.left * speed * Time.deltaTime;
-		}else if(Input.GetKey(KeyCode.Alpha6)) {
+		}else if(Input.GetKey("[6]")) {
 			transform.position += Vector3.right * speed * Time.deltaTime;
 		}
 			
