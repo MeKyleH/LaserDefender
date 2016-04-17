@@ -1,2 +1,0 @@
-# LaserDefender
-Laser Defender
